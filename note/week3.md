@@ -1,5 +1,8 @@
 # 【第3週】ブルーベリー本輪読会🫐🫐<br />(2022-05-28)
 
+[![hackmd-github-sync-badge](https://hackmd.io/U4LaI6myRGKSreuhul19Qw/badge)](https://hackmd.io/U4LaI6myRGKSreuhul19Qw)
+
+
 ###### tags: `ブルーベリー本`
 
 - [開催概要](https://hackmd.io/1kCgi6_tSGukG0KZrqDLvA)
