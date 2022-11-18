@@ -1,4 +1,7 @@
-# 【第21週】ブルーベリー本輪読会🫐🫐<br />(2022-11-12)
+# 【第21週】ブルーベリー本輪読会🫐🫐<br />(2022-11-19)
+
+[![hackmd-github-sync-badge](https://hackmd.io/_TnAfC5aTZ286C1PqB4ERA/badge)](https://hackmd.io/_TnAfC5aTZ286C1PqB4ERA)
+
 
 ###### tags: `ブルーベリー本`
 
@@ -7,7 +10,7 @@
 - [プロを目指す人のためのTypeScript入門-サポートページ](https://gihyo.jp/book/2022/978-4-297-12747-3/support)（正誤表・サンプルコードのダウンロードページ）
 
 ---
-## 2022-11-12（土）
+## 2022-11-19（土）
 
 ### タイムスケジュール
 - 雑談(5min) ~9:05
