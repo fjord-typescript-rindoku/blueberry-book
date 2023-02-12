@@ -42,6 +42,62 @@
 
 ### 各自の疑問点や気づき、学んだこと
 
+p.297 「6.7.1 object型・never型」でのサンプルコードの解説（プリミティブ型を許容しないコード）
+
+プリミティブ型は呼び出される時にラッパーオブジェクトとして暗黙的な変換がされるため、「オブジェクト型でxxxメソッドを持つもの。」という型を指定した際に、プリミティブ型のものが入ってくる場合がある。それを排除するため、object型を指定する（objectはオブジェクト型のみを指定する型）
+
+```typescript=
+type HasToString = {
+    toString: () => string
+}
+
+function useToString(value: HasToString) {
+    console.log(`value is ${value.toString()}`)
+}
+
+// toStringメソッドを持ったオブジェクト
+// ※①とする
+useToString({
+    toString() {
+        return "foo"
+    }
+})
+
+// 3.14はNumber型でtoStringメソッドは持ってないのでダメそうに思えるが、
+// 3.14は呼び出される際に、Numberのラッパーオブジェクトに暗黙的に変換されるためtoStringメソッドを呼び出せるのでOKになってる
+// ※②とする
+useToString(3.14)
+```
+```typescript=
+// ①のようなものだけ（オブジェクト型）を受け入れるようにするため、object型を指定するようにする。
+// ②のようなプリミティブがラッパーオブジェクトに変換されるようなのも排除する
+
+function useToString(value: HasToString & object) {
+    console.log(`value is ${value.toString()}`)
+}
+
+// 3.14はプリミティブ型で、Numberのラッパーオブジェクトに変換され、NumberはtoStringメソッド持ってるが、
+// object型しか受け付けないようにしたため、エラーが出る。
+
+useToString(3.14)// Argument of type 'number' is not assignable to parameter of type 'HasToString & object'.Type 'number' is not assignable to type 'object'.
+
+// hogeはオブジェクト型で、toStringを持ってるからOK
+const hoge = {
+    name: "hoge",
+    toString() {
+        return "hoge"
+    }
+}
+
+useToString(hoge)
+
+// "piyo"はプリミティブ型で、Stringのラッパーオブジェクトに変換され、StringはtoStringメソッド持ってるが、
+// object型しか受け付けないようにしたため、エラーが出る。
+
+useToString("piyo") // Argument of type 'string' is not assignable to parameter of type 'HasToString & object'.Type 'string' is not assignable to type 'object'.
+
+```
+
 - maimu
     - プリミティブ型にもラッパーオブジェクトが存在するため、オブジェクトのみを許可したい場合に暗黙的に型が変換されてしまう
         - その場合は `& object` を用いて、オブジェクトだけが許容されるように制限することが可能
